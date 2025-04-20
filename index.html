@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SnakeDog 🐕</title>
+    <style>
+        body {
+            background-color: #f5ebdc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #game-container {
+            text-align: center;
+        }
+
+        canvas {
+            border: 5px solid #a97c50;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        #restart-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #a97c50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #restart-button:hover {
+            background-color: #8a623d;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🐕 SnakeDog </h1>
+    <div id="game-container">
+        <button id="restart-button">Restart Game</button>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
