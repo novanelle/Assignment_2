@@ -12,7 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
         }
 
         #game-container {
@@ -25,7 +25,7 @@
         }
 
         h1 {
-            margin: 20px 0;
+            margin: 20px 0 10px;
         }
 
         #restart-button {
@@ -42,17 +42,29 @@
         #restart-button:hover {
             background-color: #8a623d;
         }
+
+        #content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <h1>🐕 SnakeDog </h1>
-    <div id="game-container">
-        <button id="restart-button">Restart Game</button>
+    <h1>🐕 SnakeDog</h1>
+    <div id="content-container">
+        <div id="game-container">
+            <button id="restart-button">Restart Game</button>
+        </div>
     </div>
 
-    
+
+
+    <!-- Game Script & Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/addons/p5.sound.min.js"></script>
     <script src="script.js"></script>
 </body>
 

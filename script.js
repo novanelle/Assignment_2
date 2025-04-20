@@ -1,51 +1,55 @@
+let biteSound;
 let dog;
 let bone;
 let gridSize = 20;
 let cols, rows;
 
-let snakeHeadEmoji = "🐶"; 
+let snakeHeadEmoji = "🐶";
+
+function preload() {
+  soundFormats('mp3');
+  biteSound = loadSound('bite.mp3');
+}
 
 function setup() {
   createCanvas(400, 400);
   frameRate(10);
   cols = floor(width / gridSize);
   rows = floor(height / gridSize);
-  resetGame(); 
+  resetGame();
 }
 
 function resetGame() {
   dog = new Dog();
   placeBone();
-  loop(); 
+  loop();
 }
 
 function draw() {
-  background(245, 235, 220); 
+  background(245, 235, 220);
 
   dog.update();
   drawSnake();
   drawFood();
 
   if (dog.eat(bone)) {
-    placeBone();
+    biteSound.play(); // Play the sound once
+    placeBone();      // Place a new bone once
   }
 
   if (dog.hitSelf() || dog.hitWall()) {
     noLoop();
 
-    
-    fill(0, 0, 0, 150); // Black with 150 alpha for transparency
+    fill(0, 0, 0, 150); // Background for text
     rect(0, height / 2 - 60, width, 120);
 
- 
     textSize(32);
     fill(200, 0, 0);
     textAlign(CENTER, CENTER);
     text("Game Over 🐾", width / 2, height / 2 - 20);
 
-    
     textSize(16);
-    fill(255); 
+    fill(255);
     text("Click Restart or press R", width / 2, height / 2 + 20);
   }
 }
@@ -66,7 +70,7 @@ function keyPressed() {
   } else if (keyCode === RIGHT_ARROW && dog.xdir !== -1) {
     dog.setDir(1, 0);
   } else if (key === 'r' || key === 'R') {
-    resetGame(); 
+    resetGame();
   }
 }
 
@@ -77,7 +81,7 @@ function drawSnake() {
       textAlign(CENTER, CENTER);
       text(snakeHeadEmoji, dog.body[i].x + gridSize / 2, dog.body[i].y + gridSize / 2);
     } else {
-      fill("#8B4513"); 
+      fill("#8B4513");
       ellipse(dog.body[i].x + gridSize / 2, dog.body[i].y + gridSize / 2, gridSize, gridSize);
     }
   }
@@ -86,10 +90,10 @@ function drawSnake() {
 function drawFood() {
   textSize(gridSize);
   textAlign(CENTER, CENTER);
-  text("🦴", bone.x + gridSize / 2, bone.y + gridSize / 2); 
+  text("🦴", bone.x + gridSize / 2, bone.y + gridSize / 2);
 }
 
-
+// Button for restarting the game
 document.getElementById("restart-button").addEventListener("click", () => {
   resetGame();
 });
